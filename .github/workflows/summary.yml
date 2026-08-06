@@ -11,4 +11,12 @@ jobs:
     steps:
       - name: Step one writes
         run: |
+          echo "PATH IN STEP ONE: $GITHUB_STEP_SUMMARY"
           echo "## Hello from step one" >> $GITHUB_STEP_SUMMARY
+
+      - name: Step two tries to read it
+        run: |
+          echo "PATH IN STEP TWO: $GITHUB_STEP_SUMMARY"
+          echo "--- content ---"
+          cat "$GITHUB_STEP_SUMMARY"
+          echo "--- size in bytes: $(wc -c < "$GITHUB_STEP_SUMMARY") ---"
