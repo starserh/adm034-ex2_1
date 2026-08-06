@@ -34,3 +34,11 @@ jobs:
     steps:
       - name: Write from the other job
         run: echo "## This came from other_job" >> $GITHUB_STEP_SUMMARY
+
+  fails_after_writing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write then fail
+        run: |
+          echo "## Written just before the step failed" >> $GITHUB_STEP_SUMMARY
+          exit 1
