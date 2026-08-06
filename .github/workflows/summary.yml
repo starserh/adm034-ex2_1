@@ -28,3 +28,9 @@ jobs:
         run: |
           echo "this line is written first" >> $GITHUB_STEP_SUMMARY
           echo "and this single-caret line replaced it" > $GITHUB_STEP_SUMMARY
+
+  other_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write from the other job
+        run: echo "## This came from other_job" >> $GITHUB_STEP_SUMMARY
