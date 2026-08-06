@@ -44,3 +44,46 @@ jobs:
             echo "line $i - padding padding padding padding padding" >> $GITHUB_STEP_SUMMARY
           done
           echo "BYTES WRITTEN: $(wc -c < $GITHUB_STEP_SUMMARY)"
+
+  markdown_zoo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Try every construct
+        run: |
+          {
+            echo "## Table"
+            echo "| a | b |"
+            echo "|---|---|"
+            echo "| 1 | 2 |"
+            echo
+            echo "## Code"
+            echo '```python'
+            echo "print('hi')"
+            echo '```'
+            echo
+            echo "## Task list"
+            echo "- [x] done"
+            echo "- [ ] not done"
+            echo
+            echo "## Image from the internet"
+            echo "![octocat](https://github.githubassets.com/images/modules/logos_page/Octocat.png)"
+            echo
+            echo "## Collapsible"
+            echo "<details><summary>click me</summary>"
+            echo
+            echo "hidden content"
+            echo "</details>"
+            echo
+            echo "## Raw HTML"
+            echo "<b>bold via html</b> and <script>alert(1)</script>"
+            echo
+            echo "## Mermaid"
+            echo '```mermaid'
+            echo "graph LR; A-->B;"
+            echo '```'
+            echo
+            echo "## Math"
+            echo '$$e^{i\pi}+1=0$$'
+            echo
+            echo "## Emoji :rocket:"
+          } >> $GITHUB_STEP_SUMMARY
