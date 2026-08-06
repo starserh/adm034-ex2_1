@@ -1,0 +1,14 @@
+name: Summary Lab
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step one writes
+        run: |
+          echo "## Hello from step one" >> $GITHUB_STEP_SUMMARY
